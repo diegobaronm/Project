@@ -1,6 +1,6 @@
 # Description
-This project is a simple of example of an app that can be navigated using menus; after selecting a menu item the app executes an action.
-This is a project is aimed to show the usage of some C++ "advanced" feautures, along with the usage of CMake to configure the build.
+This project is a simple example of an application that is navigated using menus printed to the terminal; after selecting a menu item the app executes an action.
+This is a project aimed to demonstrate the usage of some C++ "advanced" feautures, along with the usage of CMake to configure the build and properly organise the source code.
 # How to build
 You need a compiler that is C++(14) capable and a recent version (>3.25) of CMake.
 ```
