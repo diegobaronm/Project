@@ -1,8 +1,9 @@
-#include "Menu.h"
 #include <iostream>
+#include "Menu.h"
 
 std::vector<int> Menu::s_menuIds(0); // Initialising the static vector.
 
+// Initialise the menu members and add a new menu id to the static vector. Also check if the go back and quit menu items are to be included.
 Menu::Menu(const std::vector<std::string>& menuItems,const std::string& title ,bool includeQuit, bool includeGoBack) :
     m_menuItems(menuItems),
     m_title(title),

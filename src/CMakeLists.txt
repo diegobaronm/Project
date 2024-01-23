@@ -6,7 +6,7 @@
 #set(HEADER_LIST "${ModernCMakeExample_SOURCE_DIR}/include/modern/lib.hpp")
 
 # Make an automatic library - will be static or dynamic based on user setting
-add_library(app App.cpp Menu.cpp ActionsDictionary.cpp)
+add_library(app App.cpp Menu.cpp ActionsDictionary.cpp MenuDictionary.cpp)
 
 # We need this directory, and users of our library will need it too
 target_include_directories(app PUBLIC ../include)

@@ -3,10 +3,11 @@
 #define GENERIC_ACTION_H
 
 #include <iostream>
+#include <string>
 #include "AppContext.h"
 #include "Menu.h"
 
-/// Abstract class
+/// Abstract class to create the interface for the different actions.
 class GenericAction {
 public:
     GenericAction() = default;
@@ -15,32 +16,38 @@ public:
     GenericAction&& operator=(GenericAction&&) = delete;
     virtual ~GenericAction() = default;
     virtual void execute(AppContext& appContext, const std::vector<Menu>& menus) = 0;
+    virtual std::string getActionName() const = 0; // This function returns the name (can be used as type) of the action.
 };
 
 /// These classes implement atomic actions.
-
+// Just print "Hello World!".
 class HelloWorld : public GenericAction {
 public:
     HelloWorld() = default;
     virtual ~HelloWorld() = default;
+    std::string getActionName() const override{ return "HelloWorld";}
     void execute(AppContext& appContext, const std::vector<Menu>& menus) override {
         std::cout << "Hello World!" << std::endl;
     }
 };
-
+// Quit the application in the next iteration of the main loop. 
+// TO DO: This is where any cleaning should be done?
 class QuitApp : public GenericAction {
 public:
     QuitApp() = default;
     virtual ~QuitApp() = default;
+    std::string getActionName() const override{ return "QuitApp";}
     void execute(AppContext& appContext, const std::vector<Menu>& menus) override {
         appContext.quitApp();
     }
 };
 
+// Goes back to the previous menu.
 class GoBack : public GenericAction {
 public:
     GoBack() = default;
     virtual ~GoBack() = default;
+    std::string getActionName() const override{ return "GoBack";}
     void execute(AppContext& appContext, const std::vector<Menu>& menus) override {
         int currentMenuId = appContext.getCurrentMenuId();
         int previousMenuId = appContext.getPreviousMenuId();
@@ -51,10 +58,12 @@ public:
     }
 };
 
+// Changes the current menu to the one selected by the user.
 class ChangeMenu : public GenericAction {
 public:
     ChangeMenu() = default;
     virtual ~ChangeMenu() = default;
+    std::string getActionName() const override{ return "ChangeMenu";}
     void execute(AppContext& appContext, const std::vector<Menu>& menus) override {
         int currentMenuId = appContext.getCurrentMenuId();
         int previousMenuId = appContext.getPreviousMenuId();
@@ -65,7 +74,7 @@ public:
         const Menu& currentMenu = menus[currentMenuId];
         std::vector<std::string> menuItems = currentMenu.getItems();
         std::string itemName = menuItems[appContext.getSelectedMenuItem()-1];
-        // Get the ID of the menu called as the just retreived item name.
+        // Get the ID of the menu called as the retreived item name.
         for (const auto menu : menus){
             if (menu.getTitle() == itemName){
                 appContext.setCurrentMenuId(menu.getId());

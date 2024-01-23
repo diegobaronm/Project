@@ -10,19 +10,15 @@ class App{
     public:
     App(const AppContext& appContext, const std::vector<Menu>& appMenus): m_appContext(appContext), m_appMenus(appMenus) {
         // First, setup the application.
-        std::cout << "Setting up the application..." << std::endl;
+        std::cout << "Setting up the application, please wait..." << std::endl;
         setup();
-    };
+    }
     void setup();
     void run();
-
 
     private:
     AppContext m_appContext;
     const std::vector<Menu> m_appMenus;
-
-
 };
-
 
 #endif
