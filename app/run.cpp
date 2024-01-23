@@ -9,9 +9,6 @@
 extern const std::vector<Menu> g_menus;
 
 int main() {
-    std::cout<<"Hello World!"<<std::endl;
-
-    AppContext appContext(0);
-    App app(appContext,g_menus);
+    App app(AppContext(0),g_menus);
     app.run();
 }
