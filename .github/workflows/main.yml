@@ -2,7 +2,7 @@ name: example
 on: push
 jobs:
   Compile_release:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
