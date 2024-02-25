@@ -10,6 +10,6 @@ jobs:
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
       - name: Compile
         run: cmake --build build
-   Compile_release_Linux:
+  Compile_release_Linux:
     runs-on: ubuntu-latest
     steps: *compile_release
