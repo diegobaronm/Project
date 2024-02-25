@@ -1,8 +1,11 @@
 #include<map>
+#include<memory>
+#include<algorithm>
 #include "App.h"
 #include "GenericAction.h"
 #include "Menu.h"
 #include "Debug.h"
+
 
 typedef std::vector<std::shared_ptr<GenericAction>> actionsVector; 
 

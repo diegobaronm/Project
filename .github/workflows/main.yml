@@ -1,13 +1,15 @@
 name: example
 on: push
 jobs:
-  Compile_release:
+  Compile_release_MacOS:
     runs-on: macos-latest
-    steps:
+    steps: &compile_release
       - name: checkout repository
         uses: actions/checkout@v4
       - name: Configure
         run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
       - name: Compile
         run: cmake --build build
-   
+   Compile_release_Linux:
+    runs-on: ubuntu-latest
+    steps: *compile_release
