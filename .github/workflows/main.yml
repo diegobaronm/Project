@@ -3,7 +3,7 @@ on: push
 jobs:
   Compile_release_MacOS:
     runs-on: macos-latest
-    steps: compile_release
+    steps:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: Configure
@@ -12,7 +12,7 @@ jobs:
         run: cmake --build build
   Compile_release_Linux:
     runs-on: ubuntu-latest
-    steps: compile_release
+    steps:
       - name: checkout repository
         uses: actions/checkout@v4
       - name: Configure
