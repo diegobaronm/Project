@@ -1,7 +1,9 @@
 name: example
 on: push
 jobs:
-  greeting:
+  Compile_release:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello world
+      - Configure: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - Build: cmake --build build
+   
