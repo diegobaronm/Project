@@ -4,6 +4,8 @@ jobs:
   Compile_release:
     runs-on: ubuntu-latest
     steps:
-      - Configure: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
-      - Build: cmake --build build
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Compile
+        run: cmake --build build
    
