@@ -1,7 +1,21 @@
 name: example
 on: push
 jobs:
-  greeting:
+  Compile_release_MacOS:
+    runs-on: macos-latest
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Compile
+        run: cmake --build build
+  Compile_release_Linux:
     runs-on: ubuntu-latest
     steps:
-      - run: echo hello world
+      - name: checkout repository
+        uses: actions/checkout@v4
+      - name: Configure
+        run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+      - name: Compile
+        run: cmake --build build
